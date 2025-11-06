@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>College Admission Form</title>
+  <style>
+    :root{--max:900px;--accent:#2b6cb0;--muted:#666}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.4;background:#f6f8fb;padding:24px;display:flex;justify-content:center}
+    .container{max-width:var(--max);width:100%;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(8,36,75,0.08);padding:22px}
+    h1{font-size:20px;margin:0 0 8px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    fieldset{grid-column:1 / -1;border:1px solid #e6eef8;padding:12px;border-radius:8px}
+    legend{font-weight:600}
+    label{display:block;font-size:13px;margin-bottom:6px}
+    input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea,input[type=file],input[type=number]{width:100%;padding:8px;border:1px solid #d7e3f5;border-radius:6px;font-size:14px}
+    .full{grid-column:1 / -1}
+    .col{display:flex;gap:8px}
+    .col > *{flex:1}
+    .small{width:100%}
+    .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+    button{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:8px;font-weight:600;cursor:pointer}
+    button.secondary{background:#eef3fb;color:var(--accent);border:1px solid #d7e3f5}
+    .hint{font-size:12px;color:var(--muted);margin-top:6px}
+    .section-title{font-weight:700;margin-bottom:8px}
+    .inline{display:flex;gap:12px;align-items:center}
+    .required:after{content:" *";color:#c53030}
+    @media (max-width:760px){form{grid-template-columns:1fr} .actions{justify-content:stretch} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>College Admission Form</h1>
+    <p class="lead">Kripya sob fields thikmoto bhore submit korun. (*) diye deoya jayega gulo mandatory.</p>
+
+    <form id="admissionForm" action="#" method="post" enctype="multipart/form-data" novalidate>
+
+      <fieldset>
+        <legend>1. Applicant Information</legend>
+        <div>
+          <label class="required">Full Name</label>
+          <input type="text" name="full_name" required placeholder="Your full name" />
+        </div>
+
+        <div>
+          <label class="required">Date of Birth</label>
+          <input type="date" name="dob" required />
+        </div>
+
+        <div>
+          <label class="required">Gender</label>
+          <div class="inline">
+            <label><input type="radio" name="gender" value="Male" required /> Male</label>
+            <label><input type="radio" name="gender" value="Female" /> Female</label>
+            <label><input type="radio" name="gender" value="Other" /> Other</label>
+          </div>
+        </div>
+
+        <div>
+          <label class="required">Email</label>
+          <input type="email" name="email" required placeholder="you@example.com" />
+        </div>
+
+        <div>
+          <label class="required">Phone</label>
+          <input type="tel" name="phone" required placeholder="+91 9XXXXXXXXX" />
+        </div>
+
+        <div class="full">
+          <label class="required">Permanent Address</label>
+          <textarea name="address" rows="3" required placeholder="House, Street, City, PIN"></textarea>
+        </div>
+
+        <div>
+          <label>Nationality</label>
+          <input type="text" name="nationality" placeholder="e.g. Indian" />
+        </div>
+
+        <div>
+          <label>Category</label>
+          <select name="category">
+            <option value="General">General</option>
+            <option value="SC">SC</option>
+            <option value="ST">ST</option>
+            <option value="OBC">OBC</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Course & Academic Details</legend>
+
+        <div>
+          <label class="required">Course Applied For</label>
+          <select name="course" required>
+            <option value="">-- Select Course --</option>
+            <option>BSc</option>
+            <option>BA</option>
+            <option>BCom</option>
+            <option>BCA</option>
+            <option>BBA</option>
+            <option>MSc</option>
+            <option>MCom</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Intake / Semester</label>
+          <input type="text" name="intake" placeholder="e.g. Fall 2025 / 1st Semester" />
+        </div>
+
+        <div class="full">
+          <label class="section-title">Previous Qualification</label>
+          <div class="col">
+            <div>
+              <label class="required">Institution</label>
+              <input type="text" name="prev_institution" required placeholder="School / College name" />
+            </div>
+            <div>
+              <label class="required">Board / University</label>
+              <input type="text" name="prev_board" required placeholder="Board or University" />
+            </div>
+          </div>
+
+          <div class="col" style="margin-top:10px">
+            <div>
+              <label class="required">Year of Passing</label>
+              <input type="number" name="prev_year" required min="1900" max="2100" placeholder="2024" />
+            </div>
+            <div>
+              <label class="required">Percentage / CGPA</label>
+              <input type="text" name="prev_percent" required placeholder="e.g. 78.5% or 8.2 CGPA" />
+            </div>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Parent / Guardian Details</legend>
+
+        <div>
+          <label class="required">Father's / Guardian's Name</label>
+          <input type="text" name="father_name" required />
+        </div>
+
+        <div>
+          <label class="required">Mother's Name</label>
+          <input type="text" name="mother_name" required />
+        </div>
+
+        <div>
+          <label class="required">Parent Contact Number</label>
+          <input type="tel" name="parent_phone" required />
+        </div>
+
+        <div>
+          <label>Occupation</label>
+          <input type="text" name="parent_occupation" />
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Documents & Attachments</legend>
+
+        <div>
+          <label class="required">Passport Size Photo (JPG/PNG)</label>
+          <input type="file" name="photo" accept="image/*" required />
+        </div>
+
+        <div>
+          <label class="required">Signature (JPG/PNG)</label>
+          <input type="file" name="signature" accept="image/*" required />
+        </div>
+
+        <div class="full">
+          <label class="required">Marksheet / Transcript (PDF)</label>
+          <input type="file" name="marksheet" accept="application/pdf" required />
+          <p class="hint">Max file size and server-side validation should be enforced at backend.</p>
+        </div>
+
+        <div>
+          <label>ID Number (Aadhaar / Passport / Voter ID)</label>
+          <input type="text" name="id_number" />
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>5. Other Information</legend>
+
+        <div>
+          <label>Hostel Required?</label>
+          <div class="inline"><label><input type="checkbox" name="hostel" /> Yes, I need hostel accommodation</label></div>
+        </div>
+
+        <div>
+          <label>Do you require any special assistance?</label>
+          <select name="assistance">
+            <option>None</option>
+            <option>Physical disability support</option>
+            <option>Learning support</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>6. Declaration</legend>
+        <div class="full">
+          <label class="required">I hereby declare that the information given above is true and correct to the best of my knowledge.</label>
+          <div class="inline" style="margin-top:8px">
+            <label><input type="checkbox" name="declaration" required /> I agree to the declaration.</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="actions full">
+        <button type="reset" class="secondary">Reset</button>
+        <button type="submit">Submit Application</button>
+      </div>
+    </form>
+
+    <p class="hint" style="margin-top:14px">Note: This is a client-side template. Add server-side handling for file storage, validation, CAPTCHA and security before using in production.</p>
+  </div>
+
+  <script>
+    // Simple client-side form submit handler (demo only)
+    document.getElementById('admissionForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!this.checkValidity()){
+        alert('Please fill all required fields correctly.');
+        return;
+      }
+      // Collect data demonstration (in real use, submit to server)
+      alert('Form validated. Implement server-side endpoint to receive data.');
+    });
+  </script>
+</body>
+</html>
